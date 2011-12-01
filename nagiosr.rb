@@ -38,7 +38,7 @@ end
 get '/status/?:items?.json' do
   items = params[:items] || 'items'
   content_type :json
-  self.get_status(items, params).to_json
+  self.get_status(items, params.keys.reject{|s| s.to_s == 'items'}).to_json
 end
 
 
